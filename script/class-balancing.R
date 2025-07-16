@@ -73,13 +73,10 @@ ADASYN <- function(data, target_col, k = 5, beta = 1) {
   return(balanced_data)
 }
 
-# Apply ADASYN
 balanced_df <- ADASYN(df, "stroke", k = 5, beta = 0.5)
 
-# Save balanced dataset
 write.csv(balanced_df, "data/balanced_cpdataset.csv", row.names = FALSE)
 
-# Plot BEFORE balancing
 ggplot(df, aes(x = factor(stroke))) +
   geom_bar(width = 0.5, fill = "#FF6666") +
   labs(
@@ -90,7 +87,6 @@ ggplot(df, aes(x = factor(stroke))) +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))
 
-# Plot AFTER balancing
 ggplot(balanced_df, aes(x = factor(stroke))) +
   geom_bar(width = 0.5, fill = "#66CC99") +
   labs(
